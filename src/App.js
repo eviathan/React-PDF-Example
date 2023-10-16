@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+import { PDF } from './PDF';
 import './App.css';
+import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <PDFDownloadLink document={<PDF />} fileName="somename.pdf">
+      {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+    </PDFDownloadLink>
+      
     </div>
   );
 }
